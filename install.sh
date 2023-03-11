@@ -103,9 +103,12 @@ chmod +x /etc/wireguard/script/add_peer.sh
 chmod +x /etc/wireguard/script/delete_peer.sh
 chmod +x /etc/wireguard/script/look_conf.sh
 
-echo -e "cd /etc/wireguard/script/\n./add_peer.sh" > /usr/local/bin/add-peer | chmod +x /usr/local/bin/add-peer
-echo -e "cd /etc/wireguard/script/\n./delete_peer.sh" > /usr/local/bin/delete-peer | chmod +x /usr/local/bin/delete-peer
-echo -e "cd /etc/wireguard/script/\n./look_conf.sh" > /usr/local/bin/look-conf | chmod +x /usr/local/bin/look-conf
+echo -e "cd /etc/wireguard/script/\n./add_peer.sh" > /usr/local/bin/add-peer
+chmod +x /usr/local/bin/add-peer
+echo -e "cd /etc/wireguard/script/\n./delete_peer.sh" > /usr/local/bin/delete-peer
+chmod +x /usr/local/bin/delete-peer
+echo -e "cd /etc/wireguard/script/\n./look_conf.sh" > /usr/local/bin/look-conf
+chmod +x /usr/local/bin/look-conf
 
 echo "Adding firewall rule..."
 iptables -t nat -A POSTROUTING -s $network.0/24 -o eth0 -j MASQUERADE
