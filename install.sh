@@ -16,12 +16,12 @@ while true; do
     esac
 done
 
-mkdir /etc/wireguard/script
-mkdir /etc/wireguard/script/conf
-mv $PWD/script /etc/wireguard/script
-
 apt-get -qqq update
 apt-get -qqq install wireguard iptables-persistent python3-qrcode -y
+
+mkdir /etc/wireguard/script
+mkdir /etc/wireguard/script/conf
+mv $PWD/script /etc/wireguard/
 
 cd /etc/wireguard
 umask 077; wg genkey | tee privatekey | wg pubkey > publickey
