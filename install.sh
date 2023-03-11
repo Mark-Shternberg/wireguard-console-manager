@@ -4,7 +4,7 @@ colRed="\033[31m"
 resetCol="\033[0m"
 
 current_version=$(cat /etc/issue)
-if [[ "$current_version" == *"Ubuntu 22.04"* ]] || [[ "$current_version" == *"Ubuntu 20.04"* ]]; then echo -e " $colRed Your version of OS doesn't supported by this script !$resetCol"; exit 0; fi
+if ! [[ "$current_version" == *"Ubuntu 22.04"* ]] && ! [[ "$current_version" != *"Ubuntu 20.04"* ]]; then echo -e " $colRed Your version of OS doesn't supported by this script !$resetCol"; exit 0; fi
 
 while true; do
     echo -n "Will be installed: wireguard, iptables-persistent, python3-qrcode. Ok? [Yy/Nn]: "
