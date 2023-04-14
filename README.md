@@ -7,6 +7,8 @@ It will install wireguard and creates 3 commands:
 
 Install
 =======
+```
 git clone https://github.com/Mark-Shternberg/wireguard-console-manager.git
 cd wireguard-console-manager
 su root ./install.sh
+```
