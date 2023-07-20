@@ -21,7 +21,7 @@ apt-get -qqq install wireguard iptables-persistent python3-qrcode -y
 
 mkdir /etc/wireguard/script
 mkdir /etc/wireguard/script/conf
-mv $PWD/script /etc/wireguard/
+rsync -a $PWD/script /etc/wireguard/script
 
 cd /etc/wireguard
 umask 077; wg genkey | tee privatekey | wg pubkey > publickey
