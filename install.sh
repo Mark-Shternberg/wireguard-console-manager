@@ -7,7 +7,7 @@ current_version=$(cat /etc/issue)
 if ! [[ "$current_version" == *"Ubuntu 22.04"* ]] && ! [[ "$current_version" != *"Ubuntu 20.04"* ]]; then echo -e " $colRed Your version of OS doesn't supported by this script !$resetCol"; exit 0; fi
 
 while true; do
-    echo -n "Will be installed: wireguard, iptables-persistent, python3-qrcode. Ok? [Yy/Nn]: "
+    echo -n "Will be installed: wireguard, iptables-persistent, python3-qrcode, rsync. Ok? [Yy/Nn]: "
     read accept
     case $accept in
         [yY] ) break;;
@@ -17,11 +17,11 @@ while true; do
 done
 
 apt-get -qqq update
-apt-get -qqq install wireguard iptables-persistent python3-qrcode -y
+apt-get -qqq install wireguard iptables-persistent python3-qrcode rsync -y
 
 mkdir /etc/wireguard/script
 mkdir /etc/wireguard/script/conf
-rsync -a $PWD/script /etc/wireguard/script
+rsync -a $PWD/script /etc/wireguard/
 
 cd /etc/wireguard
 umask 077; wg genkey | tee privatekey | wg pubkey > publickey
